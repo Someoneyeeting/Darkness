@@ -11,7 +11,7 @@
 shader = ExtResource("3_qalwy")
 shader_parameter/skew = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmemd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n87go"]
 shader = ExtResource("3_jhw0g")
 shader_parameter/angle = 0.72
 shader_parameter/range = 0.42
@@ -42,7 +42,7 @@ range_item_cull_mask = 1
 
 [node name="back" parent="flashlight" index="1"]
 light_mask = 1
-material = SubResource("ShaderMaterial_mmemd")
+material = SubResource("ShaderMaterial_n87go")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

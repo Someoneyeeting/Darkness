@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxf5f6x4j8oly"]
+[gd_scene load_steps=7 format=3 uid="uid://bxf5f6x4j8oly"]
 
 [ext_resource type="PackedScene" uid="uid://wwhaq207tyyt" path="res://nodes/background.tscn" id="1_j0ufy"]
 [ext_resource type="PackedScene" uid="uid://duuw5j1v4etbg" path="res://nodes/block.tscn" id="2_p4wjs"]
 [ext_resource type="PackedScene" uid="uid://bsejhuhyw0cqr" path="res://nodes/player.tscn" id="3_ywme1"]
 [ext_resource type="PackedScene" uid="uid://c8f3pp5fdkspv" path="res://nodes/flashlight.tscn" id="4_yjjt2"]
 [ext_resource type="PackedScene" uid="uid://d33i5rmwscb16" path="res://nodes/switch.tscn" id="5_tqom8"]
+[ext_resource type="FontFile" uid="uid://cehjcvvny7v5t" path="res://Roboto-Regular.ttf" id="6_w6d63"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,7 +16,7 @@ position = Vector2(580, 832)
 scale = Vector2(36.0496, 9.81631)
 
 [node name="block2" parent="." instance=ExtResource("2_p4wjs")]
-position = Vector2(1203, -3.99997)
+position = Vector2(1211, -3.99997)
 scale = Vector2(2.82534, 22.9221)
 
 [node name="block3" parent="." instance=ExtResource("2_p4wjs")]
@@ -46,7 +47,12 @@ position = Vector2(530, 0)
 rotation = -1.57079
 scale = Vector2(1, 47.8)
 
-[node name="block7" parent="." instance=ExtResource("2_p4wjs")]
-position = Vector2(600, 800)
-rotation = -1.57079
-scale = Vector2(1, 47.8)
+[node name="Label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 278.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("6_w6d63")
+theme_override_font_sizes/font_size = 31
+text = "Press 'Space' to continue"

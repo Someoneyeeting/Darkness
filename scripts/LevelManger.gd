@@ -7,10 +7,16 @@ var curlevel = 0
 var waitingnext = false
 var platformdir = false
 
-func switch_level(level):
-	$platformtimer.start()
-	get_tree().change_scene_to_file("res://levels/" + str(level) + ".tscn")
+
+func _play_off():
 	$off.play()
+
+func switch_level(level,flag = true):
+	#if("web" not in OS.get_name().to_lower()):
+		#$off.play()
+	if("web" not in OS.get_name().to_lower() or flag):
+		$platformtimer.start()
+		get_tree().change_scene_to_file("res://levels/" + str(level) + ".tscn")
 
 
 func get_platform_pos():
@@ -22,7 +28,7 @@ func get_platform_pos():
 
 func darken():
 	$ColorRect.show()
-	$on.play()
+	$off.play()
 
 func reload_level():
 	if($restart.time_left <= 0):
@@ -31,8 +37,10 @@ func reload_level():
 
 func next_level():
 	curlevel += 1
-	$CanvasLayer/ColorRect.material.set_shader_parameter("intense",5.0)
 	switch_level(curlevel)
+
+func _switch_off():
+	$CanvasLayer/ColorRect.material.set_shader_parameter("intense",5.0)
 	LightManger.turn_off()
 
 func _switch_on():
@@ -56,11 +64,12 @@ func _ready() -> void:
 	#reload_level()
 	switchon.connect(_switch_on)
 	restart.connect(reload_level)
+	$CanvasLayer/ColorRect.material.set_shader_parameter("web",true)
 
 
 func _on_restart_timeout() -> void:
 	$ColorRect.hide()
-	switch_level(curlevel)
+	switch_level(curlevel,"web" not in OS.get_name().to_lower())
 
 
 func _on_platformtimer_timeout() -> void:
